@@ -1,0 +1,37 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-spring
+spec:
+  selector:
+    matchLabels:
+      run: my-spring
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        run: my-spring
+    spec:
+      containers:
+      - name: my-spring
+        image: rajukvaranasi/delixus:1.0
+        ports:
+        - containerPort: 8888
+		
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-spring
+  labels:
+    run: my-spring
+spec:
+  type: NodePort
+  ports:
+  - port: 8888
+    targetPort: 80
+    protocol: TCP
+    name: http
+  selector:
+    run: my-spring
