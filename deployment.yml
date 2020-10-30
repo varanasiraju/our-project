@@ -7,7 +7,7 @@ spec:
   selector:
     matchLabels:
       run: my-spring
-  replicas: 2
+  replicas: 3
   template:
     metadata:
       labels:
@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: my-spring
-        image: rajukvaranasi/delixus:1.0
+        image: rajukvaranasi/delixus:1.0.3
         ports:
         - containerPort: 8888	
 ---
